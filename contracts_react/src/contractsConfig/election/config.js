@@ -1,0 +1,4 @@
+import ABI from "./abi.json"
+
+export const ELECTION_ABI = ABI;
+export const ELECTION_ADDRESS = "0x007F82451e0CF37666BAB1A1433992b5660E2376";
