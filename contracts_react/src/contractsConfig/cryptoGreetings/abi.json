@@ -16,7 +16,7 @@
 			{
 				"indexed": false,
 				"internalType": "uint256",
-				"name": "amoun",
+				"name": "amount",
 				"type": "uint256"
 			}
 		],
@@ -49,6 +49,19 @@
 		"type": "event"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_message",
+				"type": "string"
+			}
+		],
+		"name": "sendGreeting",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"name": "getGreetings",
 		"outputs": [
@@ -67,6 +80,11 @@
 					{
 						"internalType": "uint256",
 						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
 						"type": "uint256"
 					}
 				],
@@ -102,6 +120,11 @@
 				"internalType": "uint256",
 				"name": "timestamp",
 				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
@@ -118,19 +141,6 @@
 			}
 		],
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "_message",
-				"type": "string"
-			}
-		],
-		"name": "sendGreeting",
-		"outputs": [],
-		"stateMutability": "payable",
 		"type": "function"
 	}
 ]

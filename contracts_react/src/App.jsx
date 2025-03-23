@@ -8,23 +8,14 @@ import ElectionPage from "./pages/electionPage/ElectionPage";
 import GreetingsPage from "./pages/greetingsPage/GreetingsPage";
 import darkTheme from "./theme/darkTheme";
 import { ThemeProvider } from "@mui/material";
-import { ToastContainer, Bounce } from "react-toastify";
+import { ToastContainer, Bounce, toast } from "react-toastify";
 import { AccountContext } from "./providers/accountProvider/AccountProvider";
 
 function App() {
-    const { setAccount } = useContext(AccountContext);
+    const { getAccount } = useContext(AccountContext);
 
     useEffect(() => {
-        if (window.ethereum) {
-            try {
-                const localAddress = localStorage.getItem("token");
-                if (localAddress) {
-                    setAccount(localAddress);
-                }
-            } catch (error) {
-                console.error("Error init wallet", error);
-            }
-        }
+        getAccount().catch(error => toast.error(error));
     }, []);
 
     return (

@@ -15,17 +15,12 @@ const LotteryPage = () => {
     const [joined, setJoined] = useState(false);
     const [manager, setManager] = useState(null);
 
-    const { account, setAccount } = useContext(AccountContext);
+    const { account, setAccount, getAccount } = useContext(AccountContext);
     const navigate = useNavigate();
 
-    const getAccount = () => {
+    const checkAccount = () => {
         if (!account) {
-            const address = localStorage.getItem("token");
-            if (address) {
-                setAccount(address);
-            } else {
-                navigate("/");
-            }
+            getAccount().catch(error => console.error(error));
         }
     }
 
@@ -37,7 +32,7 @@ const LotteryPage = () => {
     }
 
     useEffect(() => {
-        getAccount();
+        checkAccount();
         getJoined();
 
         const initContract = async () => {

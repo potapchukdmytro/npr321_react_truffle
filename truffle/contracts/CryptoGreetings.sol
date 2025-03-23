@@ -6,13 +6,14 @@ contract CryptoGreetings {
         address sender;
         string message;
         uint256 timestamp;
+        uint256 amount;
     }
 
     address public owner;
     Greeting[] public greetings;
 
     event NewGreeting(address indexed sender, string message, uint256 timestamp);
-    event MoneyRecived(address indexed sender, uint256 amoun);
+    event MoneyRecived(address indexed sender, uint256 amount);
 
     constructor() {
         owner = msg.sender;
@@ -25,7 +26,7 @@ contract CryptoGreetings {
     function sendGreeting(string memory _message) public payable {
         require(bytes(_message).length > 0, "Message cannot be empty");
 
-        greetings.push(Greeting(msg.sender, _message, block.timestamp));
+        greetings.push(Greeting(msg.sender, _message, block.timestamp, msg.value));
         emit NewGreeting(msg.sender, _message, block.timestamp);
 
         if(msg.value > 0) {
